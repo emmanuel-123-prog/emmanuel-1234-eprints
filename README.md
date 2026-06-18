@@ -1,2 +1,2 @@
-# emmanuel-1234-eprints
+# eprints
 Website
