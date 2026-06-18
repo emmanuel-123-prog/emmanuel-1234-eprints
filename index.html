@@ -171,6 +171,105 @@ body{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--t
 .price-row .label{font-size:.82rem;color:var(--muted)}
 .price-row .amount{font-size:1.1rem;font-weight:800;color:var(--green);letter-spacing:-.02em}
 
+
+/* ATM PAYMENT CARD */
+.payment-atm-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  padding:1.35rem 1.25rem 1.25rem;
+  min-height:200px;
+  background:linear-gradient(135deg,#002920 0%,#00574a 40%,#007a6a 70%,#004d40 100%);
+  color:#fff;
+  box-shadow:0 14px 40px rgba(0,60,50,.45),0 2px 6px rgba(0,0,0,.2);
+  margin-bottom:1rem;
+}
+/* Large decorative circles */
+.payment-atm-card::before{
+  content:'';
+  position:absolute;
+  width:220px;height:220px;
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+  right:-60px;top:-70px;
+  pointer-events:none;
+}
+.payment-atm-card::after{
+  content:'';
+  position:absolute;
+  width:140px;height:140px;
+  border-radius:50%;
+  background:rgba(0,200,130,.1);
+  left:-40px;bottom:-40px;
+  pointer-events:none;
+}
+/* Circuit lines SVG overlay */
+.atm-circuit{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  opacity:.13;
+  pointer-events:none;
+}
+/* Shimmer bar */
+.atm-shimmer{
+  position:absolute;
+  top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+  animation:atmShimmer 3.5s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes atmShimmer{0%{left:-100%}60%{left:160%}100%{left:160%}}
+/* Magnetic strip bar (visual) */
+.atm-strip{
+  position:absolute;
+  right:0;top:50%;transform:translateY(-50%);
+  width:18px;height:80%;
+  background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.12),rgba(255,255,255,.04));
+  border-radius:4px 0 0 4px;
+  opacity:.6;
+}
+.payment-atm-chip{
+  width:44px;height:34px;
+  border-radius:7px;
+  background:linear-gradient(135deg,#ffd54f 0%,#ffe082 45%,#ffb300 100%);
+  margin-bottom:1.1rem;
+  position:relative;z-index:1;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+/* Chip inner lines */
+.payment-atm-chip::before{
+  content:'';
+  position:absolute;
+  inset:6px 8px;
+  border:1.5px solid rgba(0,0,0,.18);
+  border-radius:3px;
+}
+.payment-atm-title{
+  font-size:.72rem;
+  opacity:.75;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  position:relative;z-index:1;
+}
+.payment-atm-number{
+  font-size:1.4rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  margin:.45rem 0 1rem;
+  font-family:'Courier New',monospace;
+  position:relative;z-index:1;
+  text-shadow:0 1px 4px rgba(0,0,0,.3);
+}
+.payment-atm-row{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  position:relative;z-index:1;
+}
+.payment-atm-label{font-size:.6rem;opacity:.7;text-transform:uppercase;letter-spacing:.08em}
+.payment-atm-value{font-size:.84rem;font-weight:700}
+
 /* PAYMENT */
 .pay-detail{display:flex;justify-content:space-between;align-items:center;padding:.72rem 1rem;border-bottom:1px solid var(--border)}
 .pay-detail:last-child{border-bottom:none}
@@ -234,7 +333,31 @@ body{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--t
 .chat-send:hover{background:var(--green-dark)}
 .no-msg{text-align:center;color:var(--muted);font-size:.82rem;padding:2rem 1rem}
 
-/* SUCCESS */
+/* SUPPORT TABS */
+.support-tabs{display:flex;background:var(--bg);border-radius:50px;padding:3px;gap:3px;margin-bottom:1.2rem;border:1px solid var(--border)}
+.support-tab{flex:1;padding:.62rem;text-align:center;border-radius:50px;font-size:.82rem;font-weight:700;cursor:pointer;color:var(--muted);border:none;background:transparent;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:.3rem}
+.support-tab.active{background:var(--white);color:var(--green);box-shadow:var(--shadow)}
+.support-tab-pane{display:none}
+.support-tab-pane.active{display:flex;flex-direction:column}
+.bot-header{display:flex;align-items:center;gap:.65rem;padding:.9rem 1rem;background:linear-gradient(135deg,var(--green-dark),var(--green));border-radius:12px 12px 0 0}
+.bot-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.bot-name{font-size:.88rem;font-weight:700;color:#fff}
+.bot-status{font-size:.68rem;color:rgba(255,255,255,.7)}
+.bot-chat-area{background:var(--bg);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;min-height:200px;padding:.8rem;display:flex;flex-direction:column;gap:.5rem}
+.bot-bubble{max-width:82%;padding:.58rem .85rem;border-radius:14px;font-size:.82rem;line-height:1.5}
+.bot-bubble.bot{background:var(--white);border:1px solid var(--border);color:var(--text);border-radius:14px 14px 14px 4px;align-self:flex-start}
+.bot-bubble.user{background:var(--green);color:#fff;border-radius:14px 14px 4px 14px;align-self:flex-end}
+.bot-bubble.typing span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--muted);animation:botTyping .9s ease-in-out infinite;margin:0 1px}
+.bot-bubble.typing span:nth-child(2){animation-delay:.15s}
+.bot-bubble.typing span:nth-child(3){animation-delay:.3s}
+@keyframes botTyping{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.bot-quick-btns{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.4rem}
+.bot-quick-btn{padding:.32rem .75rem;border:1.5px solid var(--green);border-radius:50px;background:transparent;color:var(--green);font-family:'Inter',sans-serif;font-size:.74rem;font-weight:600;cursor:pointer;transition:all .15s}
+.bot-quick-btn:hover{background:var(--green);color:#fff}
+.wa-support-card{background:linear-gradient(135deg,#e8f5e9,#f1fbf1);border:1.5px solid rgba(0,137,123,.2);border-radius:14px;padding:1.1rem;margin-bottom:.7rem}
+.wa-support-card h3{color:var(--green-dark);margin-bottom:.3rem;font-size:.92rem}
+.wa-support-card p{font-size:.78rem;color:var(--muted);line-height:1.5;margin-bottom:.7rem}
+.wa-badge{display:inline-flex;align-items:center;gap:.3rem;background:#25D366;color:#fff;font-size:.72rem;font-weight:700;padding:.25rem .7rem;border-radius:50px;margin-bottom:.8rem}
 #success-overlay{display:none;position:fixed;inset:0;background:rgba(255,255,255,.97);z-index:500;flex-direction:column;align-items:center;justify-content:center}
 #success-overlay.open{display:flex}
 .success-ring{width:86px;height:86px;border-radius:50%;border:3px solid var(--green);display:flex;align-items:center;justify-content:center;animation:ringIn .45s cubic-bezier(.34,1.56,.64,1) both}
@@ -404,7 +527,7 @@ body{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--t
     <!-- Greeting + orders loaded here -->
     <div class="wrap">
       <div style="margin-bottom:1rem">
-        <p style="font-size:1.1rem;font-weight:800;color:var(--text)">Hello, <span id="home-name">there</span> 👋</p>
+        <p style="font-size:1.1rem;font-weight:800;color:var(--text)">Welcome back, <span id="home-name">there</span> 👋</p>
         <p style="font-size:.8rem;color:var(--muted);margin-top:.15rem">Here are your recent orders</p>
       </div>
       <div id="home-orders"><div class="spinner"></div></div>
@@ -443,31 +566,87 @@ body{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--t
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━
-  SCREEN: CHAT
+  SCREEN: CHAT (Support)
 ━━━━━━━━━━━━━━━━━━━━━━ -->
 <div id="s-chat" class="screen">
   <div class="topbar">
     <button class="back-btn" onclick="gotoTab('home')">←</button>
-    <div class="topbar-title">Support Chat</div>
+    <div class="topbar-title">Support</div>
     <div class="topbar-spacer"></div>
   </div>
   <div class="screen-body" id="chat-scroll">
-    <div id="chat-msgs" class="chat-area"><div class="no-msg">👋 Send a message and we'll reply soon!</div></div>
-    <div class="wrap" style="padding-top:0">
-      <div class="card" style="margin-top:.5rem">
-        <div class="card-inner" style="padding:.8rem">
-          <p style="font-size:.78rem;color:var(--muted);margin-bottom:.6rem">Prefer WhatsApp? Message us directly:</p>
-          <div class="field"><label>Your Name</label><input id="wa-name" type="text" placeholder="Your name"/></div>
-          <div class="field"><label>Order ID</label><input id="wa-id" type="text" placeholder="e.g. 12345"/></div>
-          <div class="field"><label>Message</label><textarea id="wa-msg" style="min-height:60px" placeholder="Your complaint or question…"></textarea></div>
-          <button class="btn btn-outline" onclick="openWA()" style="margin-top:.4rem">Open WhatsApp 💬</button>
+    <div class="wrap" style="padding-top:.9rem">
+
+      <!-- Tab switcher -->
+      <div class="support-tabs">
+        <button class="support-tab active" id="stab-bot" onclick="switchSupportTab('bot')">🤖 AI Assistant</button>
+        <button class="support-tab" id="stab-human" onclick="switchSupportTab('human')">💬 Live Chat</button>
+        <button class="support-tab" id="stab-wa" onclick="switchSupportTab('wa')">📲 WhatsApp</button>
+      </div>
+
+      <!-- ── AI BOT TAB ── -->
+      <div class="support-tab-pane active" id="spane-bot">
+        <div class="bot-header">
+          <div class="bot-avatar">🤖</div>
+          <div>
+            <div class="bot-name">ePrints Bot</div>
+            <div class="bot-status">● Online · Replies instantly</div>
+          </div>
+        </div>
+        <div class="bot-chat-area" id="bot-msgs">
+          <div class="bot-bubble bot">
+            👋 Hi! I'm ePrints Bot. I can answer questions about your orders, pricing, delivery, and more. How can I help?
+            <div class="bot-quick-btns">
+              <button class="bot-quick-btn" onclick="botQuick('What are your prices?')">💰 Pricing</button>
+              <button class="bot-quick-btn" onclick="botQuick('How long does delivery take?')">🚀 Delivery</button>
+              <button class="bot-quick-btn" onclick="botQuick('How do I track my order?')">📦 Track Order</button>
+              <button class="bot-quick-btn" onclick="botQuick('What payment methods do you accept?')">💳 Payment</button>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-bar" style="border-top:1px solid var(--border);background:var(--white);border-radius:0 0 10px 10px;margin-top:-1px">
+          <input class="chat-input" id="bot-input" placeholder="Ask me anything…" onkeydown="if(event.key==='Enter')sendBotMsg()"/>
+          <button class="chat-send" onclick="sendBotMsg()">➤</button>
         </div>
       </div>
+
+      <!-- ── LIVE CHAT TAB ── -->
+      <div class="support-tab-pane" id="spane-human">
+        <div class="card" style="margin-bottom:0">
+          <div style="padding:.7rem 1rem;background:var(--green-dark);border-radius:12px 12px 0 0;display:flex;align-items:center;gap:.6rem">
+            <span style="font-size:1.1rem">💬</span>
+            <div>
+              <div style="font-size:.85rem;font-weight:700;color:#fff">Live Chat with ePrints</div>
+              <div style="font-size:.67rem;color:rgba(255,255,255,.65)">We reply within a few hours</div>
+            </div>
+          </div>
+          <div id="chat-msgs" class="chat-area" style="border-top:1px solid var(--border)"><div class="no-msg">👋 Send a message and we'll reply soon!</div></div>
+          <div class="chat-input-bar">
+            <input class="chat-input" id="chat-input" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sendChat()"/>
+            <button class="chat-send" onclick="sendChat()">➤</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── WHATSAPP TAB ── -->
+      <div class="support-tab-pane" id="spane-wa">
+        <div class="wa-support-card">
+          <div class="wa-badge">● WhatsApp</div>
+          <h3>Chat Directly on WhatsApp</h3>
+          <p>Fill in your details and we'll open WhatsApp with a pre-filled message so we can assist you faster.</p>
+          <div class="field"><label>Your Name</label><input id="wa-name" type="text" placeholder="Your full name"/></div>
+          <div class="field"><label>Order ID (optional)</label><input id="wa-id" type="text" placeholder="e.g. 12345"/></div>
+          <div class="field"><label>Your Question / Complaint</label><textarea id="wa-msg" style="min-height:70px" placeholder="What do you need help with?…"></textarea></div>
+          <button class="btn btn-primary" onclick="openWA()" style="background:#25D366;box-shadow:0 4px 20px rgba(37,211,102,.3)">Open WhatsApp 📲</button>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <p style="font-size:.78rem;color:var(--muted);line-height:1.6">📞 You can also save our number and message us directly:<br/><b style="color:var(--green);font-size:.9rem">+234 810 341 4603</b></p>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
-  <div class="chat-input-bar">
-    <input class="chat-input" id="chat-input" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sendChat()"/>
-    <button class="chat-send" onclick="sendChat()">➤</button>
   </div>
   <div class="bottom-bar visible">
     <button class="tab-item" onclick="gotoTab('home')"><span class="tab-icon">🏠</span><span class="tab-label">Home</span></button>
@@ -639,15 +818,43 @@ body{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--t
       </div>
 
       <!-- Bank details -->
-      <div class="card" style="border-color:rgba(0,137,123,.2)">
-        <div style="padding:.7rem 1rem;background:var(--green-light);border-bottom:1px solid rgba(0,137,123,.15)">
-          <span style="font-size:.72rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em">🏦 Transfer to this account</span>
+      <div class="payment-atm-card">
+        <!-- Circuit board SVG overlay -->
+        <svg class="atm-circuit" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="40" x2="80" y2="40" stroke="#fff" stroke-width="1.5"/>
+          <line x1="80" y1="40" x2="80" y2="90" stroke="#fff" stroke-width="1.5"/>
+          <line x1="80" y1="90" x2="160" y2="90" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="80" cy="40" r="3" fill="#fff"/>
+          <circle cx="80" cy="90" r="3" fill="#fff"/>
+          <circle cx="160" cy="90" r="3" fill="#fff"/>
+          <line x1="160" y1="90" x2="160" y2="150" stroke="#fff" stroke-width="1.5"/>
+          <line x1="160" y1="150" x2="300" y2="150" stroke="#fff" stroke-width="1.5"/>
+          <line x1="240" y1="40" x2="300" y2="40" stroke="#fff" stroke-width="1.5"/>
+          <line x1="240" y1="40" x2="240" y2="130" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="240" cy="130" r="3" fill="#fff"/>
+          <line x1="0" y1="130" x2="100" y2="130" stroke="#fff" stroke-width="1"/>
+          <line x1="100" y1="130" x2="100" y2="180" stroke="#fff" stroke-width="1"/>
+          <circle cx="100" cy="130" r="2" fill="#fff"/>
+          <rect x="60" y="28" width="8" height="8" rx="1" fill="none" stroke="#fff" stroke-width="1"/>
+          <rect x="220" y="60" width="8" height="8" rx="1" fill="none" stroke="#fff" stroke-width="1"/>
+        </svg>
+        <div class="atm-shimmer"></div>
+        <div class="atm-strip"></div>
+        <div class="payment-atm-chip"></div>
+        <div class="payment-atm-title">ePrints · Moniepoint</div>
+        <div class="payment-atm-number">8103 4146 03</div>
+        <div class="payment-atm-row">
+          <div>
+            <div class="payment-atm-label">Account Name</div>
+            <div class="payment-atm-value" style="font-size:.74rem;max-width:140px;line-height:1.3">Emmanuel David Osagie Omoruyi</div>
+          </div>
+          <div style="text-align:right">
+            <div class="payment-atm-label">Amount Due</div>
+            <div class="payment-atm-value" id="pay-amt" style="font-size:1.1rem;color:#a5ffdc">₦—</div>
+          </div>
         </div>
-        <div class="pay-detail"><span class="k">Account Number</span><span class="v">8103414603 <button class="copy-btn" onclick="copyTxt('8103414603',this)">Copy</button></span></div>
-        <div class="pay-detail"><span class="k">Bank</span><span class="v">Moniepoint</span></div>
-        <div class="pay-detail"><span class="k">Account Name</span><span class="v">Emmanuel David Osagie Omoruyi</span></div>
-        <div class="pay-detail"><span class="k">Amount</span><span class="v" id="pay-amt" style="color:var(--green);font-weight:800">₦—</span></div>
       </div>
+      <button class="btn btn-outline" onclick="copyTxt('8103414603',this)" style="margin-bottom:.8rem">Copy Account Number</button>
 
       <!-- Receipt upload -->
       <div class="card">
@@ -1214,11 +1421,8 @@ function loadHomeOrders(){
       }
       var orders=snap.docs.map(function(d){return d.data();});
       orders.sort(function(a,b){return(b.createdAtMs||0)-(a.createdAtMs||0);});
-      var html='';
-      orders.slice(0,3).forEach(function(o){
-        html+=buildOrderCard(o);
-      });
-      list.innerHTML=html;
+      var latest=orders[0];
+      list.innerHTML='<div class="card"><div class="card-inner" style="padding:1rem"><h3 style="margin-bottom:.5rem">📦 Latest Order</h3><p style="font-size:.85rem;color:var(--muted)">Order #'+latest.orderId+' is currently <b>'+statusLbl(latest.status)+'</b></p><button class="btn btn-outline" onclick="gotoTab(\'orders\')" style="margin-top:.8rem">View My Orders</button></div></div><div class="card" style="margin-top:.7rem"><div class="card-inner" style="padding:1rem"><h3>Need help?</h3><p style="font-size:.85rem;color:var(--muted)">Chat with our support team or contact us on WhatsApp.</p><button class="btn btn-primary" onclick="gotoTab(\'chat\')">Open Support</button></div></div>';
       list.querySelectorAll('.order-card').forEach(function(c,i){
         c.onclick=function(){openModal(orders[i],false);};
       });
@@ -1356,6 +1560,73 @@ function openModal(o,isAdmin){
 }
 function closeModal(){document.getElementById('order-modal').classList.remove('open');}
 
+// ── SUPPORT TABS ──
+function switchSupportTab(tab){
+  ['bot','human','wa'].forEach(function(t){
+    document.getElementById('stab-'+t).classList.toggle('active',t===tab);
+    document.getElementById('spane-'+t).classList.toggle('active',t===tab);
+  });
+  if(tab==='human') loadChat();
+}
+
+// ── AI CHATBOT ──
+var BOT_CONTEXT=[
+  {role:'user',content:'You are ePrints Bot, a friendly and helpful customer support assistant for ePrints, a custom T-shirt printing business based in Nigeria. '+
+    'You help customers with questions about pricing, orders, delivery, payment, design uploads, WhatsApp contact, and general enquiries. '+
+    'Pricing: Plain shirts cost ₦5,000 each. Custom printed shirts cost ₦8,000 each. '+
+    'Payment: Bank transfer to Moniepoint account 8103 4146 03 (Emmanuel David Osagie Omoruyi). Upload receipt after transfer. '+
+    'Delivery: Varies by location, usually 2–5 working days. '+
+    'WhatsApp: +234 810 341 4603. '+
+    'Shirt sizes available: Small, Medium, Large, Extra Large. '+
+    'Design: Upload PNG or JPG. Plain shirts also available without design. '+
+    'Be concise, warm, and helpful. Respond in 1–3 short sentences unless a longer explanation is needed. Always be encouraging.'}
+];
+
+function sendBotMsg(){
+  var inp=document.getElementById('bot-input');
+  var text=inp.value.trim();
+  if(!text) return;
+  inp.value='';
+  appendBotMsg(text,'user');
+  var typing=appendBotMsg('','typing');
+  var msgs=BOT_CONTEXT.concat([{role:'user',content:text}]);
+  fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:300,system:BOT_CONTEXT[0].content,messages:[{role:'user',content:text}]})
+  })
+  .then(function(r){return r.json();})
+  .then(function(data){
+    typing.remove();
+    var reply=(data.content&&data.content[0]&&data.content[0].text)||'Sorry, I had trouble answering that. Please try again or contact us on WhatsApp!';
+    appendBotMsg(reply,'bot');
+  })
+  .catch(function(){
+    typing.remove();
+    appendBotMsg('Sorry, I couldn\'t connect right now. Please try WhatsApp support instead! 📲','bot');
+  });
+}
+
+function appendBotMsg(text,type){
+  var box=document.getElementById('bot-msgs');
+  var div=document.createElement('div');
+  if(type==='typing'){
+    div.className='bot-bubble bot typing';
+    div.innerHTML='<span></span><span></span><span></span>';
+  } else {
+    div.className='bot-bubble '+type;
+    div.textContent=text;
+  }
+  box.appendChild(div);
+  box.scrollTop=box.scrollHeight;
+  return div;
+}
+
+function botQuick(q){
+  document.getElementById('bot-input').value=q;
+  sendBotMsg();
+}
+
 // ── ADMIN ──
 function adminLogin(){
   var pass=document.getElementById('adm-pass').value;
@@ -1403,7 +1674,7 @@ function renderAdmin(){
       '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;flex-wrap:wrap;gap:.4rem">'+
         '<div><div class="admin-id">#'+o.orderId+'</div>'+
         '<div class="admin-meta">👤 '+o.userName+' · 📧 '+o.userEmail+'</div>'+
-        '<div class="admin-meta">'+(o.whatsapp?'💬 '+o.whatsapp:'')+' · 📍 '+(o.delivery||'—')+'</div>'+
+        '<div class="admin-meta">'+(o.whatsapp?'💬 <a href="https://wa.me/234'+o.whatsapp.replace(/^0/,'').replace(/\D/g,'')+'" target="_blank" style="color:#25D366;font-weight:700;text-decoration:none">'+o.whatsapp+' ↗</a>':'')+' · 📍 '+(o.delivery||'—')+'</div>'+
         '<div class="admin-meta">🕐 '+fmtDate(o.createdAtMs)+'</div></div>'+
         '<span class="badge '+o.status+'">'+statusLbl(o.status)+'</span>'+
       '</div>'+
